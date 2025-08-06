@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV Chap - Crée ton CV pro maintenant | Service #1 au Bénin</title>
+  <meta name="description" content="🚀 Service #1 de création de CV pro au Bénin. 24h, 1500 FCFA, Mobile Money. +500 clients satisfaits. Décroche ton job de rêve maintenant !">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #2563eb;
+      --secondary: #10b981;
+      --accent: #f59e0b;
+      --dark: #111827;
+      --light: #f8fafc;
+      --success: #059669;
+      --warning: #d97706;
+      --text: #1f2937;
+      --text-light: #6b7280;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* Floating Navigation */
+    .floating-nav {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      gap: 10px;
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: slideDown 1s ease-out 2s forwards;
+    }
+
+    .nav-btn {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 10px 15px;
+      border-radius: 25px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .nav-btn.primary {
+      background: linear-gradient(135deg, var(--secondary), var(--success));
+      color: white;
+      border: none;
+    }
+
+    /* Enhanced Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
+    }
+
+    .hero-particles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
+    .hero-content {
+      text-align: center;
+      color: white;
+      z-index: 2;
+      position: relative;
+      max-width: 900px;
+      padding: 2rem;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid rgba(255,255,255,0.2);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(255,255,255,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.03em;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      background: linear-gradient(45deg, #fff, #f0f0f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.2rem, 4vw, 1.6rem);
+      margin-bottom: 2.5rem;
+      opacity: 0.95;
+      font-weight: 400;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .hero-cta {
+      background: linear-gradient(135deg, var(--secondary), var(--success));
+      padding: 1.2rem 3rem;
+      border-radius: 50px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-cta.secondary {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 10px 30px rgba(255,255,255,0.1);
+    }
+
+    .hero-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(16, 185, 129, 0.5);
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      display: block;
+      color: #fbbf24;
+    }
+
+    .hero-stat-label {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* Alert Bar with Animation */
+    .alert-bar {
+      background: linear-gradient(90deg, var(--accent), var(--warning));
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-weight: 500;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      animation: slideInDown 0.5s ease-out;
+    }
+
+    .alert-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .alert-bar a {
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      background: rgba(255,255,255,0.2);
+      padding: 0.3rem 1rem;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .alert-bar a:hover {
+      background: rgba(255,255,255,0.3);
+      transform: scale(1.05);
+    }
+
+    /* Enhanced Sections */
+    .section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .section-alt {
+      background: var(--light);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-subtitle {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+
+    .section h2 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .section p {
+      font-size: 1.2rem;
+      color: var(--text-light);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Social Proof */
+    .social-proof {
+      background: white;
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid #e5e7eb;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .testimonial {
+      background: var(--light);
+      padding: 2rem;
+      border-radius: 20px;
+      position: relative;
+      border: 1px solid #e5e7eb;
+    }
+
+    .testimonial::before {
+      content: '"';
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      font-size: 4rem;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .testimonial-role {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    /* Enhanced Features */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .feature {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 25px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+      text-align: center;
+      transition: all 0.4s ease;
+      border: 1px solid #e5e7eb;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+
+    .feature:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    }
+
+    .feature-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 1.5rem;
+      color: white;
+    }
+
+    .feature h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .feature p {
+      color: var(--text-light);
+      margin: 0;
+      text-align: center;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Enhanced Steps */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 3rem;
+      margin-top: 4rem;
+      position: relative;
+    }
+
+    .step {
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .step::before {
+      content: '';
+      position: absolute;
+      top: 50px;
+      left: calc(100% - 20px);
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      z-index: 1;
+    }
+
+    .step:last-child::before {
+      display: none;
+    }
+
+    .step-number {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--primary), #1d4ed8);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 800;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+      position: relative;
+      z-index: 2;
+    }
+
+    .step h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .step p {
+      color: var(--text-light);
+      margin: 0;
+      text-align: center;
+      font-size: 1rem;
+    }
+
+    /* Enhanced Form */
+    .form-container {
+      background: white;
+      border-radius: 25px;
+      padding: 3rem;
+      margin-top: 3rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      border: 1px solid #e5e7eb;
+    }
+
+    .form-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+      border-radius: 25px 25px 0 0;
+    }
+
+    .order-form {
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+      min-height: 800px;
+      background: var(--light);
+      border: 1px solid #e5e7eb;
+    }
+
+    .form-fallback {
+      text-align: center;
+      margin-top: 2rem;
+      padding: 2rem;
+      background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+      border-radius: 15px;
+    }
+
+    /* Enhanced CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, var(--dark), #1f2937, #374151);
+      color: white;
+      text-align: center;
+      padding: 5rem 2rem;
+      margin-top: 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .cta-section .section-header {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-section h2 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      color: #d1d5db;
+      margin-bottom: 3rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-button {
+      background: linear-gradient(135deg, var(--secondary), var(--success));
+      padding: 1.5rem 3rem;
+      border-radius: 50px;
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 15px 40px rgba(16, 185, 129, 0.3);
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(16, 185, 129, 0.4);
+    }
+
+    .cta-button.secondary {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* Enhanced Footer */
+    footer {
+      background: var(--dark);
+      color: #9ca3af;
+      text-align: center;
+      padding: 3rem 2rem;
+      position: relative;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #d1d5db;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--secondary);
+    }
+
+    /* Price Highlight */
+    .price {
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 25px;
+      font-weight: 700;
+      display: inline-block;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 0 10px rgba(251, 191, 36, 0.5); }
+      to { box-shadow: 0 0 20px rgba(251, 191, 36, 0.8); }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInDown {
+      from {
+        transform: translateY(-100%);
+      }
+      to {
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mobile Optimizations */
+    @media (max-width: 768px) {
+      .hero {
+        min-height: 85vh;
+      }
+      
+      .hero-stats {
+        gap: 1.5rem;
+      }
+
+      .hero-ctas {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .section {
+        padding: 3rem 1rem;
+      }
+      
+      .features {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .feature {
+        padding: 2rem;
+      }
+      
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .step::before {
+        display: none;
+      }
+
+      .floating-nav {
+        position: relative;
+        top: auto;
+        right: auto;
+        justify-content: center;
+        margin: 1rem;
+        opacity: 1;
+        transform: none;
+        animation: none;
+      }
+
+      .nav-btn {
+        font-size: 0.8rem;
+        padding: 8px 12px;
+      }
+
+      .form-container {
+        padding: 1.5rem;
+        border-radius: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .alert-content {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .hero-stat-number {
+        font-size: 1.5rem;
+      }
+
+      .hero-stat-label {
+        font-size: 0.8rem;
+      }
+      
+      .cta-button {
+        padding: 1.2rem 2rem;
+        font-size: 1rem;
+      }
+
+      .form-container {
+        padding: 1rem;
+      }
+    }
+
+    /* Tablet optimizations */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .features {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .steps {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Loading animation */
+    .loading {
+      opacity: 0;
+      animation: fadeIn 1s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body class="loading">
+  <!-- Floating Navigation -->
+  <div class="floating-nav">
+    <a href="#commander" class="nav-btn primary">📝 Commander</a>
+    <a href="https://wa.me/message/G7XT76XHSCG3K1" class="nav-btn">💬 WhatsApp</a>
+  </div>
+
+  <!-- Alert Bar -->
+  <div class="alert-bar">
+    <div class="alert-content">
+      <span>🔥 OFFRE LIMITÉE : CV Pro + Lettre de motivation</span>
+      <span class="price">1500 FCFA</span>
+      <a href="https://forms.gle/gJbss387vbPbZKez7">Commander maintenant</a>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-particles" id="particles"></div>
+    <div class="hero-content">
+      <div class="hero-badge">🏆 Service #1 de CV au Bénin</div>
+      <h1>CV Chap</h1>
+      <p class="hero-subtitle">Transforme ton CV, transforme ta vie. Crée un CV qui fait la différence en moins de 24h avec notre équipe d'experts.</p>
+      <div class="hero-ctas">
+        <a href="https://forms.gle/gJbss387vbPbZKez7" class="hero-cta">
+          📝 Commander mon CV
+        </a>
+        <a href="#comment-ca-marche" class="hero-cta secondary">
+          ▶️ Comment ça marche
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-number">500+</span>
+          <span class="hero-stat-label">Clients satisfaits</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-number">24h</span>
+          <span class="hero-stat-label">Livraison garantie</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-number">98%</span>
+          <span class="hero-stat-label">Taux de réussite</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof -->
+  <section class="social-proof fade-in">
+    <div class="section-header">
+      <div class="section-subtitle">Témoignages</div>
+      <h2>Ils ont réussi avec CV Chap</h2>
+    </div>
+    <div class="testimonials">
+      <div class="testimonial">
+        <p class="testimonial-text">Grâce à CV Chap, j'ai décroché un entretien dans une grande entreprise en 3 jours ! Le CV était parfait.</p>
+        <div class="testimonial-author">Marie Adjovi</div>
+        <div class="testimonial-role">Comptable, Cotonou</div>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-text">Service rapide et professionnel. Mon nouveau CV m'a permis d'obtenir 5 entretiens en 2 semaines.</p>
+        <div class="testimonial-author">Kossi Mensah</div>
+        <div class="testimonial-role">Ingénieur, Porto-Novo</div>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-text">Excellent travail ! Le design était moderne et adapté à mon secteur. Je recommande vivement.</p>
+        <div class="testimonial-author">Fatima Bello</div>
+        <div class="testimonial-role">Marketing, Parakou</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Section -->
+  <section class="section fade-in">
+    <div class="section-header">
+      <div class="section-subtitle">Le problème</div>
+      <h2>Pourquoi ton ancien CV te bloque</h2>
+      <p>
+        Un recruteur passe en moyenne 7 secondes sur un CV. Si ton document est mal présenté, trop chargé ou pas adapté au poste, il est immédiatement écarté. C'est pour ça que CV Chap t'aide à avoir un CV clair, convaincant et adapté à ton profil professionnel.
+      </p>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="section section-alt fade-in">
+    <div class="section-header">
+      <div class="section-subtitle">Nos avantages</div>
+      <h2>Ce que tu obtiens avec CV Chap</h2>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">✅</div>
+        <h3>CV sur mesure</h3>
+        <p>Créé par un expert, adapté au poste que tu vises et à ton secteur d'activité. Design moderne et professionnel.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">⚡</div>
+        <h3>Livraison express</h3>
+        <p>Tu reçois ton CV professionnel en maximum 24h, prêt à postuler immédiatement dans tes entreprises cibles.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📱</div>
+        <h3>Paiement simple</h3>
+        <p>Payable facilement par Mobile Money (MTN) — seulement <span class="price">1500 FCFA</span> tout compris.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🎁</div>
+        <h3>Bonus inclus</h3>
+        <p>Lettre de motivation personnalisée offerte + conseils pour réussir tes entretiens.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="comment-ca-marche" class="section fade-in">
+    <div class="section-header">
+      <div class="section-subtitle">Notre processus</div>
+      <h2>Comment ça marche ?</h2>
+      <p>Un processus simple en 3 étapes pour obtenir ton CV professionnel qui te démarque de la concurrence</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Remplis le formulaire</h3>
+        <p>Partage tes informations professionnelles via notre formulaire sécurisé en ligne</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Notre expert travaille</h3>
+        <p>Un spécialiste RH crée ton CV personnalisé selon les standards internationaux</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Reçois ton CV</h3>
+        <p>Reçois ton CV professionnel + lettre de motivation sous 24h par email et WhatsApp</p>
+      </div>
+    </div>
+    
+    <!-- CTA to form -->
+    <div style="text-align: center; margin-top: 4rem;">
+      <a href="https://forms.gle/gJbss387vbPbZKez7" class="cta-button">
+        📝 Remplir le formulaire maintenant
+      </a>
+    </div>
+  </section>
+
+  <!-- Order Form Section -->
+  <section id="commander" class="section section-alt fade-in">
+    <div class="section-header">
+      <div class="section-subtitle">Étape 1</div>
+      <h2>Commande ton CV professionnel</h2>
+      <p>Remplis ce formulaire pour recevoir ton CV sur mesure en 24h maximum. Toutes tes informations sont sécurisées.</p>
+    </div>
+    
+    <div class="form-container">
+      <!-- Formulaire Google Forms intégré -->
+      <div style="text-align: center; margin-bottom: 1rem;">
+        <p style="color: var(--text-light); font-size: 0.9rem;">Formulaire sécurisé - Toutes tes informations sont protégées 🔒</p>
+      </div>
+      
+      <iframe 
+        src="https://docs.google.com/forms/d/e/1FAIpQLSfn0vRinvrtpPDSIOknWdJBwWR9zpg7ei6o1S5kjef5H6XVMg/viewform?embedded=true" 
+        width="100%" 
+        height="900" 
+        frameborder="0" 
+        marginheight="0" 
+        marginwidth="0"
+        class="order-form"
+        loading="lazy"
+        title="Formulaire de commande CV Chap">
+        Chargement du formulaire...
+      </iframe>
+      
+      <!-- Bouton direct vers le formulaire -->
+      <div style="text-align: center; margin: 1.5rem 0;">
+        <a href="https://forms.gle/gJbss387vbPbZKez7" target="_blank" class="cta-button">
+          📝 Ouvrir le formulaire dans un nouvel onglet
+        </a>
+      </div>
+      
+      <!-- Alternative CTA if form doesn't load -->
+      <div class="form-fallback">
+        <h3>Préfères-tu commander directement ?</h3>
+        <p>Contacte-nous via WhatsApp pour passer ta commande rapidement</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/message/G7XT76XHSCG3K1" class="cta-button">
+            💬 Commander via WhatsApp
+          </a>
+          <a href="https://wa.me/message/G7XT76XHSCG3K1" class="cta-button secondary">
+            📞 Appeler maintenant
+          </a>
+        </div>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-light);">
+          ⚡ Réponse immédiate garantie • 🛡️ Service 100% sécurisé
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section fade-in">
+    <div class="section-header">
+      <div class="section-subtitle">Questions fréquentes</div>
+      <h2>Tu as des questions ?</h2>
+    </div>
+    <div class="faq-container">
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Combien de temps faut-il pour recevoir mon CV ?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Tu reçois ton CV professionnel en maximum 24h après avoir rempli le formulaire et effectué le paiement. La plupart du temps, c'est même plus rapide !</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Comment faire le paiement ?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Le paiement se fait par Mobile Money (MTN Money) ou par virement bancaire. Nous t'envoyons les détails après ta commande.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Puis-je demander des modifications ?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Bien sûr ! Nous offrons jusqu'à 2 révisions gratuites pour que ton CV soit parfait. Ta satisfaction est notre priorité.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Dans quels formats je reçois mon CV ?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Tu reçois ton CV en format PDF haute qualité pour l'impression et en format Word modifiable pour les candidatures en ligne.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <h3>Y a-t-il une garantie ?</h3>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Oui ! Si tu n'es pas satisfait de ton CV, nous le refaisons entièrement ou nous te remboursons. Garantie 100% satisfait ou remboursé.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="cta-section">
+    <div class="section-header">
+      <h2>Prêt à décrocher ton job de rêve ?</h2>
+      <p>Rejoins les centaines de professionnels qui ont déjà transformé leur carrière avec CV Chap. Ne laisse plus ton CV te bloquer !</p>
+    </div>
+    <div class="cta-buttons">
+      <a href="#commander" class="cta-button">
+        📝 Commander maintenant — 1500 FCFA
+      </a>
+      <a href="https://wa.me/message/G7XT76XHSCG3K1" class="cta-button secondary">
+        💬 Poser une question
+      </a>
+    </div>
+    
+    <div class="guarantee-badge">
+      <div style="margin-top: 3rem; padding: 1.5rem; background: rgba(255,255,255,0.1); border-radius: 15px; backdrop-filter: blur(10px);">
+        <h4 style="color: #10b981; margin-bottom: 0.5rem;">✅ Garantie 100% Satisfait</h4>
+        <p style="margin: 0; font-size: 0.9rem;">CV refait gratuitement si tu n'es pas satisfait</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-links">
+        <a href="https://forms.gle/gJbss387vbPbZKez7">Commander</a>
+        <a href="https://wa.me/message/G7XT76XHSCG3K1">WhatsApp</a>
+        <a href="mailto:contact@cvchap.com">Email</a>
+        <a href="#comment-ca-marche">Comment ça marche</a>
+      </div>
+      <p>CV Chap © 2025 — Service #1 de création de CV professionnel au Bénin<br>
+      ⚡ Livraison 24h • 💰 Paiement Mobile Money • 🛡️ 100% Sécurisé • ❤️ Créé avec passion depuis Cotonou</p>
+      
+      <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #374151;">
+        <p style="font-size: 0.8rem; color: #6b7280;">
+          Service disponible dans tout le Bénin : Cotonou, Porto-Novo, Parakou, Abomey-Calavi, Godomey, Akpro-Missérété, Bohicon, Kandi, Lokossa, Ouidah, Savalou, Djougou, Dogbo, Come, Malanville, Pobè, Kétou, Savè, Bassila, Glazoué, Dassa-Zoumé, Allada, Ze, Grand-Popo, Bembèrèkè, Nikki, Banikoara, Ségbana, Karimama, Sinendé, N'Dali, Tchaourou, Ouèssè, Kalalé, Péhunco, Copargo, Boukoumbé, Toucountouna, Cobly, Matéri, Tanguiéta, Natitingou, Kouandé, Kérou, Pèrèrè, Gogounou, Bante, Ouinhi, Zangnanado, Covè, Zakpota, Agbangnizoun, Djidja, Klouékanmè, Lalo, Toviklin, Aplahoué, Djakotomey, Houéyogbé, Athiémé, Bonou, Adjohoun, Dangbo, Aguégués, Sème-Podji, Ifangni, Adja-Ouèrè, Sakété, Avrankou
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Enhanced animations and interactions
+    document.addEventListener('DOMContentLoaded', function() {
+      // Create floating particles
+      const particlesContainer = document.getElementById('particles');
+      for (let i = 0; i < 20; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.width = particle.style.height = Math.random() * 10 + 5 + 'px';
+        particle.style.animationDelay = Math.random() * 6 + 's';
+        particle.style.animationDuration = Math.random() * 3 + 3 + 's';
+        particlesContainer.appendChild(particle);
+      }
+
+      // Intersection Observer for animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+
+      // Observe all fade-in elements
+      document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
+      });
+
+      // FAQ Accordion
+      const faqItems = document.querySelectorAll('.faq-item');
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        const icon = item.querySelector('.faq-icon');
+        
+        question.addEventListener('click', () => {
+          const isOpen = item.classList.contains('open');
+          
+          // Close all other items
+          faqItems.forEach(otherItem => {
+            if (otherItem !== item) {
+              otherItem.classList.remove('open');
+              otherItem.querySelector('.faq-icon').textContent = '+';
+            }
+          });
+          
+          // Toggle current item
+          if (isOpen) {
+            item.classList.remove('open');
+            icon.textContent = '+';
+          } else {
+            item.classList.add('open');
+            icon.textContent = '−';
+          }
+        });
+      });
+
+      // Smooth scroll with offset for fixed header
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            const offset = 80;
+            const targetPosition = target.offsetTop - offset;
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+
+      // CTA Button click animations
+      document.querySelectorAll('.hero-cta, .cta-button').forEach(button => {
+        button.addEventListener('click', function(e) {
+          // Create ripple effect
+          const ripple = document.createElement('span');
+          ripple.style.cssText = `
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+          `;
+          
+          const rect = this.getBoundingClientRect();
+          const size = Math.max(rect.width, rect.height);
+          ripple.style.width = ripple.style.height = size + 'px';
+          ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+          ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+          
+          this.style.position = 'relative';
+          this.style.overflow = 'hidden';
+          this.appendChild(ripple);
+          
+          setTimeout(() => ripple.remove(), 600);
+        });
+      });
+
+      // Counter animation for hero stats
+      const animateCounter = (element, target) => {
+        let current = 0;
+        const increment = target / 50;
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          
+          if (target > 100) {
+            element.textContent = Math.floor(current) + '+';
+          } else {
+            element.textContent = Math.floor(current) + '%';
+          }
+        }, 30);
+      };
+
+      // Trigger counter animation when hero is visible
+      const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const stats = document.querySelectorAll('.hero-stat-number');
+            animateCounter(stats[0], 500);
+            setTimeout(() => animateCounter(stats[2], 98), 200);
+            heroObserver.disconnect();
+          }
+        });
+      });
+
+      const heroSection = document.querySelector('.hero');
+      if (heroSection) {
+        heroObserver.observe(heroSection);
+      }
+
+      // Form loading enhancement
+      const iframe = document.querySelector('.order-form');
+      if (iframe) {
+        iframe.addEventListener('load', () => {
+          iframe.style.opacity = '1';
+          iframe.style.transform = 'translateY(0)';
+        });
+        
+        iframe.style.opacity = '0';
+        iframe.style.transform = 'translateY(20px)';
+        iframe.style.transition = 'all 0.5s ease';
+      }
+    });
+
+    // Add CSS for FAQ and additional animations
+    const additionalStyles = `
+      .faq-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .faq-item {
+        margin-bottom: 1rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .faq-item:hover {
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      }
+
+      .faq-question {
+        padding: 1.5rem;
+        background: white;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background 0.3s ease;
+      }
+
+      .faq-question:hover {
+        background: #f8fafc;
+      }
+
+      .faq-question h3 {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text);
+      }
+
+      .faq-icon {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--primary);
+        transition: transform 0.3s ease;
+      }
+
+      .faq-item.open .faq-icon {
+        transform: rotate(45deg);
+      }
+
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        background: #f8fafc;
+      }
+
+      .faq-item.open .faq-answer {
+        max-height: 200px;
+        padding: 1.5rem;
+      }
+
+      .faq-answer p {
+        margin: 0;
+        color: var(--text-light);
+        line-height: 1.6;
+      }
+
+      @keyframes ripple {
+        to {
+          transform: scale(2);
+          opacity: 0;
+        }
+      }
+
+      /* Mobile FAQ optimizations */
+      @media (max-width: 768px) {
+        .faq-question {
+          padding: 1rem;
+        }
+        
+        .faq-question h3 {
+          font-size: 1rem;
+        }
+        
+        .faq-item.open .faq-answer {
+          padding: 1rem;
+        }
+      }
+    `;
+
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = additionalStyles;
+    document.head.appendChild(styleSheet);
+  </script>
+</body>
+</html>
